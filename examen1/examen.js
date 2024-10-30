@@ -13,33 +13,70 @@ function llegirData (file) {
     }
 }
 productes = llegirData("productes.json");
-//console.table(productes);
 
 //EX2
 function mostrarProducte(producte) {
     for (let propietat in producte){
         if (typeof producte[propietat] === "object"){
             for (let subPropietat in producte[propietat]){
-                console.log(subPropietat)
+                console.log(subPropietat + ":" + producte[propietat][subPropietat]);
             }
+        }
+        else{
+            console.log(propietat + ":" + producte[propietat]);
         }
     }
 }
-mostrarProducte(productes[1]);
+
 
 //EX3
 function mostrarProductes(productes){
     for (let i = 0; i < productes.length; i++) {
-        console.log("Nom: "+ productes[i].nom);
-        console.log("marca: "+ productes[i].marca);
-        console.log("categoria: "+ productes[i].categoria);
-        console.log("preu: "+ productes[i].preu);
-        console.log("Nom: "+ productes[i].nom);
-        console.log("Nom: "+ productes[i].nom);
-        console.log("Nom: "+ productes[i].nom);
-        console.log("Nom: "+ productes[i].nom);
-        console.log("Nom: "+ productes[i].nom);
+        console.log("\n PRODUCTE" + i);
+        producte = productes[i];
+        for (let propietat in producte){
+            if (typeof producte[propietat] === "object"){
+                for (let subPropietat in producte[propietat]){
+                    console.log(subPropietat + ":" + producte[propietat][subPropietat]);
+                }
+            }
+            else{
+                console.log(propietat + ":" + producte[propietat]);
+            }
+        }
     }
 }
 
-//mostrarProductes(productes)
+//EX4
+function mostrarProducteID(productes, id){
+    for (let i = 0; i < productes.length; i++) {
+        if (productes[i].id=== id){
+            producte = productes[i];
+            for (let propietat in producte){
+                if (typeof producte[propietat] === "object"){
+                    for (let subPropietat in producte[propietat]){
+                        console.log(subPropietat + ":" + producte[propietat][subPropietat]);
+                    }
+                }
+                else{
+                    console.log(propietat + ":" + producte[propietat]);
+                }
+            }
+        }
+    }
+}
+
+//EX5
+
+//1
+console.log("Exercici1")
+console.table(llegirData("productes.json"));
+//2
+console.log("\nExercici2")
+mostrarProducte(productes[1]);
+//3
+console.log("\nExercici3");
+mostrarProductes(productes);
+//4
+console.log("\nExercici5");
+mostrarProducteID(productes, 3);

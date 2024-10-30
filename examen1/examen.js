@@ -9,15 +9,37 @@ function llegirData (file) {
         console.error(`Error: ${error}`);
         data = [];
     }finally {
-        return data;
+        return JSON.parse(data);
     }
 }
-data = llegirData("productes.json");
-//console.log(data);
+productes = llegirData("productes.json");
+//console.table(productes);
 
 //EX2
 function mostrarProducte(producte) {
-    console.log(producte);
+    for (let propietat in producte){
+        if (typeof producte[propietat] === "object"){
+            for (let subPropietat in producte[propietat]){
+                console.log(subPropietat)
+            }
+        }
+    }
 }
-console.log(data[1])
-//console.log(mostrarProducte(data[1]));
+mostrarProducte(productes[1]);
+
+//EX3
+function mostrarProductes(productes){
+    for (let i = 0; i < productes.length; i++) {
+        console.log("Nom: "+ productes[i].nom);
+        console.log("marca: "+ productes[i].marca);
+        console.log("categoria: "+ productes[i].categoria);
+        console.log("preu: "+ productes[i].preu);
+        console.log("Nom: "+ productes[i].nom);
+        console.log("Nom: "+ productes[i].nom);
+        console.log("Nom: "+ productes[i].nom);
+        console.log("Nom: "+ productes[i].nom);
+        console.log("Nom: "+ productes[i].nom);
+    }
+}
+
+//mostrarProductes(productes)
